@@ -26,9 +26,7 @@ import {
 function PortfolioForm() {
   const [step, setStep] = useState(1);
   const nextStep = () => {
-    if (validateStep(step)) {
-      setStep((prev) => Math.min(prev + 1, 3));
-    }
+    setStep((prev) => Math.min(prev + 1, 4));
   };
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
 
@@ -152,64 +150,6 @@ function PortfolioForm() {
         certificate_url: "",
       },
     ]);
-  };
-
-  // Step validation
-  const validateStep = (step) => {
-    switch (step) {
-      case 1:
-        return (
-          validateMyDetails() && validateAddress() && validateProfileLinks()
-        );
-      case 2:
-        return (
-          validateEducation() && validateProject() && validateCertificates()
-        );
-      case 3:
-        return validateExperience() && validateSkills();
-      default:
-        return false;
-    }
-  };
-
-  // Validation functions for each section
-  const validateMyDetails = () => {
-    const { name, email, phone } = myDetails;
-    return name && email && phone;
-  };
-
-  const validateAddress = () => {
-    const { location, city, pincode, state, country } = address[0];
-    return location && city && pincode && state && country;
-  };
-
-  const validateProfileLinks = () => {
-    const { link_name, url } = profileLink[0];
-    return link_name && url;
-  };
-
-  const validateEducation = () => {
-    return education.every((edu) => edu.institute && edu.course && edu.score);
-  };
-
-  const validateProject = () => {
-    return project.every((proj) => proj.proj_name && proj.description);
-  };
-
-  const validateCertificates = () => {
-    return certificate.every(
-      (cert) => cert.name && cert.institute && cert.certificate_url
-    );
-  };
-
-  const validateExperience = () => {
-    return experience.every(
-      (exp) => exp.organization && exp.role && exp.description && exp.start_date
-    );
-  };
-
-  const validateSkills = () => {
-    return skill.every((sk) => sk.name && sk.category);
   };
 
   // Form submission
@@ -349,10 +289,14 @@ function PortfolioForm() {
             Previous
           </button>
           <div>
-            {step === 3 ? (
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
+            {step === 4 ? (
+              <div>
+                <h4 className="text-center">Review Your Info</h4>
+                {/* Add a summary of all entered data here */}
+                <button type="submit" className="btn btn-success mt-3">
+                  Submit Portfolio
+                </button>
+              </div>
             ) : (
               <button
                 type="button"
