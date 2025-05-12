@@ -1,0 +1,23 @@
+.skill-form-container {
+    padding: 20px;
+  }
+  
+  .skill-form-title {
+    margin-bottom: 20px;
+  }
+  
+  .skill-item {
+    margin-bottom: 1rem;
+  }
+  
+  .skill-form-container .btn-outline-primary {
+    width: 100%;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .skill-item .col-md-6 {
+      margin-bottom: 1rem;
+    }
+  }
+  
